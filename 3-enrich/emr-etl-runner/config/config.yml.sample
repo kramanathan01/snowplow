@@ -77,3 +77,10 @@ storage:
       password: ADD HERE
       maxerror: # Not required for Postgres
       comprows: # Not required for Postgres
+monitoring:
+  tags: # Array of tags to describe this job
+    - prod
+  snowplow:
+    method: get
+    app_id: ADD HERE # e.g. snowplow
+    collector: ADD HERE # e.g. d3rkrsqld9gmqf.cloudfront.net
