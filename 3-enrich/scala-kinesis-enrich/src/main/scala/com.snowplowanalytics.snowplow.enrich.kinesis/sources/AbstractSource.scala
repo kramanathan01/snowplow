@@ -122,9 +122,12 @@ object AbstractSource {
 abstract class AbstractSource(config: KinesisEnrichConfig, igluResolver: Resolver,
                               enrichmentRegistry: EnrichmentRegistry, 
                               tracker: Option[Tracker]) {
+
+  // Records must not exceed MaxBytes - 1MB
+  private val MaxBytes = 1000000L
   
   val MaxRecordSize = if (config.sink == Sink.Kinesis) {
-    Some(1000000L)
+    Some(MaxBytes)
   } else {
     None
   }
