@@ -72,9 +72,6 @@ class KinesisSink(provider: AWSCredentialsProvider,
   private lazy val log = LoggerFactory.getLogger(getClass())
   import log.{error, debug, info, trace}
 
-  // Records must not exceed MaxBytes - 1MB
-  private val MaxBytes = 1000000L
-
   private val name = inputType match {
     case InputType.Good => config.enrichedOutStream
     case InputType.Bad => config.badOutStream
